@@ -1,0 +1,68 @@
+# ==============================
+# Python
+# ==============================
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+
+# ==============================
+# Testing / Coverage
+# ==============================
+.pytest_cache/
+.coverage
+htmlcov/
+
+
+# ==============================
+# Terraform
+# ==============================
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+
+# ==============================
+# IDE / Editor
+# ==============================
+.vscode/
+.idea/
+
+
+# ==============================
+# macOS
+# ==============================
+.DS_Store
+
+
+# ==============================
+# Logs
+# ==============================
+*.log
+
+
+# ==============================
+# Docker
+# ==============================
+docker-compose.override.yml
