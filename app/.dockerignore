@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual Environment
+.venv/
+venv/
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Environment Files
+.env
+.env.*
+
+# Tests
+tests/
+
+# Documentation
+README.md
+
+# macOS
+.DS_Store
