@@ -1,68 +1,103 @@
 # ==============================
+
 # Python
+
 # ==============================
-.pytest_cache/
-__pycache__/
+
+**pycache**/
 *.py[cod]
 *.pyo
+.pytest_cache/
 
 # Virtual environments
+
 .venv/
 venv/
 env/
 
 # Environment variables / secrets
+
 .env
 .env.*
 !.env.example
 
+# ==============================
+
+# Testing / Coverage
 
 # ==============================
-# Testing / Coverage
-# ==============================
-.pytest_cache/
+
 .coverage
 htmlcov/
 
+# ==============================
+
+# Terraform
 
 # ==============================
-# Terraform
-# ==============================
+
 .terraform/
+
+# Terraform state
+
 *.tfstate
 *.tfstate.*
+
+# Terraform variable files
+
 *.tfvars
 *.tfvars.json
+
+# Terraform crash logs
+
 crash.log
 crash.*.log
 
 # Terraform override files
+
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
+# ==============================
+
+# Secrets / Private Keys
 
 # ==============================
-# IDE / Editor
+
+*.pem
+*.key
+
 # ==============================
+
+# IDE / Editor
+
+# ==============================
+
 .vscode/
 .idea/
 
+# ==============================
+
+# macOS
 
 # ==============================
-# macOS
-# ==============================
+
 .DS_Store
 
+# ==============================
+
+# Logs
 
 # ==============================
-# Logs
-# ==============================
+
 *.log
 
+# ==============================
+
+# Docker
 
 # ==============================
-# Docker
-# ==============================
+
 docker-compose.override.yml
