@@ -65,89 +65,85 @@ Developer → GitHub → GitHub Actions → Security Checks → Docker → GHCR 
 ![Secure Cloud DevOps Platform Architecture](docs/screenshots/project-architecture.png)
 
 
-## Project Structure
+## 📁 Project Structure
 
 secure-cloud-devops-platform/
 │
-├── 📁 .github/
-│   └── 📁 workflows/
-│       ├── 🔄 ci.yml
-│       └── 🚀 deploy.yml
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       └── deploy.yml
 │
-├── 📁 app/
-│   ├── 📁 src/
-│   │   ├── 🐍 main.py
-│   │   └── 📄 __init__.py
+├── app/
+│   ├── src/
+│   │   ├── main.py
+│   │   └── __init__.py
 │   │
-│   ├── 📁 tests/
-│   │   ├── 🧪 test_api.py
-│   │   └── 📄 __init__.py
-│   │
-│   ├── 🐳 Dockerfile
-│   ├── 📄 requirements.txt
-│   └── 📄 .dockerignore
+│   └── tests/
+│       ├── test_api.py
+│       └── __init__.py
 │
-├── 📁 infrastructure/
-│   └── 📁 terraform/
+├── infrastructure/
+│   └── terraform/
 │       │
-│       ├── 📁 modules/
-│       │   ├── 📁 vpc/
+│       ├── modules/
+│       │   ├── vpc/
 │       │   │   ├── main.tf
 │       │   │   ├── variables.tf
 │       │   │   └── outputs.tf
 │       │   │
-│       │   ├── 📁 security/
+│       │   ├── security/
 │       │   │   ├── main.tf
 │       │   │   ├── variables.tf
 │       │   │   └── outputs.tf
 │       │   │
-│       │   ├── 📁 iam/
+│       │   ├── iam/
 │       │   │   ├── main.tf
 │       │   │   ├── variables.tf
 │       │   │   └── outputs.tf
 │       │   │
-│       │   ├── 📁 ecr/
+│       │   ├── ecr/
 │       │   │   ├── main.tf
 │       │   │   ├── variables.tf
 │       │   │   └── outputs.tf
 │       │   │
-│       │   └── 📁 ec2/
+│       │   └── ec2/
 │       │       ├── main.tf
 │       │       ├── variables.tf
 │       │       └── outputs.tf
 │       │
-│       └── 📁 environments/
-│           │
-│           ├── 📁 staging/
+│       └── environments/
+│           ├── staging/
 │           │   ├── main.tf
 │           │   ├── variables.tf
 │           │   ├── outputs.tf
 │           │   └── terraform.tfvars
 │           │
-│           └── 📁 production/
+│           └── production/
 │               ├── main.tf
 │               ├── variables.tf
 │               ├── outputs.tf
 │               └── terraform.tfvars
 │
-├── 📁 scripts/
-│   ├── 🔧 build.sh
-│   ├── 🚀 deploy.sh
-│   └── 🧹 cleanup.sh
+├── scripts/
+│   ├── build.sh
+│   ├── deploy.sh
+│   └── cleanup.sh
 │
-├── 📁 docs/
-│   ├── 📐 architecture/
+├── docs/
+│   ├── architecture/
 │   │   └── project-architecture.png
-│   │
-│   ├── 📋 deployment.md
-│   ├── 🔐 security.md
-│   └── 🏗️ infrastructure.md
+│   ├── deployment.md
+│   ├── security.md
+│   └── infrastructure.md
 │
-├── 📄 .gitignore
-├── 📄 .dockerignore
-├── 📄 README.md
-├── 📄 LICENSE
-└── 📄 Makefile
+├── Dockerfile
+├── requirements.txt
+├── .dockerignore
+├── .gitignore
+├── Makefile
+├── LICENSE
+└── README.md
 
 ## 🧰 Technology Stack
 
