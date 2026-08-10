@@ -272,14 +272,13 @@ infrastructure/terraform/
 └── environments/
     ├── staging/
     └── production/
-```          │
-│                                                               │
-└───────────────────────────────────────────────────────────────┘
-
+```  
+----       │
 ## Secure Cloud DevOps Platform
 
-
 Security is implemented as a defense-in-depth architecture, applying controls across the source-code, CI/CD, container, identity, network, and AWS infrastructure layers.
+
+
 # Security Architecture
 Key controls include:
 
@@ -343,11 +342,6 @@ The platform validates application code, containerization, and infrastructure be
                                   ▼
                               AWS Deploy
 ```
-
-##  Deployment Workflow
-
-The application follows an automated deployment path from source control to the AWS runtime environment.
-
 
   ## Deployment Workflow
 
@@ -418,9 +412,9 @@ The application follows an automated deployment path from source control to the 
 | Runtime      |   EC2           | Run container       |
 | Verification |   `/health`      | Confirm deployment  |
 
-**Infrastructure:** AWS resources are provisioned separately using 🏗️ **Terraform**.
+**Infrastructure:** AWS resources are provisioned separately using **Terraform**.
 
-## 📊 Results & Verification
+##  Results & Verification
 
 The platform was validated across the application, container, and infrastructure layers.
 
@@ -434,6 +428,7 @@ The platform was validated across the application, container, and infrastructure
 |   **API Health Check** | ✅ `{"status":"healthy"}` |
 |   **GitHub Actions** | ✅ CI Workflow Successful |
 
+ 
   Application Verification
 curl http://localhost:8000/health
 {
@@ -443,6 +438,8 @@ curl http://localhost:8000/health
   Infrastructure Verification
 terraform validate
 Success! The configuration is valid.
+
+
 
 
 ![GitHub Actions CI/CD](docs/screenshots/github-actions-success.png)
