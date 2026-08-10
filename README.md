@@ -34,14 +34,14 @@ Secure Cloud DevOps Platform is a focused DevOps project that provisions AWS inf
           ▼
      ❤️ /health
 
-⚙️ Deployment Flow
+Deployment Flow
 
 Code → Docker → ECR → EC2 → FastAPI
 
 Terraform provisions the VPC, subnets, routing, security, IAM, ECR, and EC2 infrastructure, creating a reproducible foundation for the application.
 ## Project Objective
 
-🎯 Project Objective
+ Project Objective
 
 Build a secure and reproducible AWS deployment workflow using Terraform, Docker, ECR, and EC2, demonstrating core DevOps practices from infrastructure provisioning to containerized application deployment.
 
@@ -65,8 +65,10 @@ Developer → GitHub → GitHub Actions → Security Checks → Docker → GHCR 
 ![Secure Cloud DevOps Platform Architecture](docs/screenshots/project-architecture.png)
 
 
-## 📁 Project Structure
 
+## Project Structure
+
+```text
 secure-cloud-devops-platform/
 │
 ├── .github/
@@ -85,45 +87,16 @@ secure-cloud-devops-platform/
 │
 ├── infrastructure/
 │   └── terraform/
-│       │
 │       ├── modules/
 │       │   ├── vpc/
-│       │   │   ├── main.tf
-│       │   │   ├── variables.tf
-│       │   │   └── outputs.tf
-│       │   │
 │       │   ├── security/
-│       │   │   ├── main.tf
-│       │   │   ├── variables.tf
-│       │   │   └── outputs.tf
-│       │   │
 │       │   ├── iam/
-│       │   │   ├── main.tf
-│       │   │   ├── variables.tf
-│       │   │   └── outputs.tf
-│       │   │
 │       │   ├── ecr/
-│       │   │   ├── main.tf
-│       │   │   ├── variables.tf
-│       │   │   └── outputs.tf
-│       │   │
 │       │   └── ec2/
-│       │       ├── main.tf
-│       │       ├── variables.tf
-│       │       └── outputs.tf
 │       │
 │       └── environments/
 │           ├── staging/
-│           │   ├── main.tf
-│           │   ├── variables.tf
-│           │   ├── outputs.tf
-│           │   └── terraform.tfvars
-│           │
 │           └── production/
-│               ├── main.tf
-│               ├── variables.tf
-│               ├── outputs.tf
-│               └── terraform.tfvars
 │
 ├── scripts/
 │   ├── build.sh
@@ -144,20 +117,21 @@ secure-cloud-devops-platform/
 ├── Makefile
 ├── LICENSE
 └── README.md
+```
 
-## 🧰 Technology Stack
+##  Technology Stack
 
 | Category                | Technologies                           |
 | ----------------------- | -------------------------------------- |
-| ☁️ **Cloud**            | AWS · VPC · EC2 · ECR · IAM            |
-| 🏗️ **Infrastructure**  | Terraform · Terraform Modules          |
-| 🔄 **CI/CD**            | GitHub Actions                         |
-| 🐙 **Version Control**  | Git · GitHub                           |
-| 🐳 **Containerization** | Docker                                 |
-| 🐍 **Application**      | Python · FastAPI                       |
-| 🧪 **Testing**          | Pytest · FastAPI TestClient            |
-| 🐚 **Automation**       | Bash                                   |
-| 🔐 **Security**         | IAM · Security Groups · GitHub Secrets |
+|   **Cloud**            | AWS · VPC · EC2 · ECR · IAM            |
+|   **Infrastructure**  | Terraform · Terraform Modules          |
+|   **CI/CD**            | GitHub Actions                         |
+|   **Version Control**  | Git · GitHub                           |
+|   **Containerization** | Docker                                 |
+|   **Application**      | Python · FastAPI                       |
+|   **Testing**          | Pytest · FastAPI TestClient            |
+|   **Automation**       | Bash                                   |
+|   **Security**         | IAM · Security Groups · GitHub Secrets |
 
 
 ### Key Capabilities
@@ -172,231 +146,277 @@ secure-cloud-devops-platform/
 - Infrastructure and deployment troubleshooting
 
 
-## CI/CD Workflow
+## 🔄 CI/CD Workflow
 
-👨‍💻 Developer
-      │
-      │ git push
-      ▼
-┌──────────────────────┐
-│ 🐙 GitHub            │
-│ Source Repository    │
-└──────────┬───────────┘
-           │
-           │ Trigger
-           ▼
-┌──────────────────────┐
-│ ⚙️ GitHub Actions    │
-│ CI/CD Pipeline       │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ 📥 Checkout Code     │
-│ Retrieve Repository  │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ 🧪 Pytest            │
-│ Run Automated Tests  │
-└──────────┬───────────┘
-           │
-       Tests Pass?
-        /       \
-      ❌         ✅
-      │           │
-      ▼           ▼
-   Pipeline   ┌──────────────────────┐
-    Stops     │ 🐳 Docker            │
-              │ Build Container Image│
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │ 📦 Amazon ECR        │
-              │ Push Container Image │
-              └──────────┬───────────┘
-                         │
-                         │ Pull Image
-                         ▼
-              ┌──────────────────────┐
-              │ 🖥️ Amazon EC2        │
-              │ Docker Runtime       │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │ 🚀 FastAPI           │
-              │ Application          │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │ ❤️ /health           │
-              │ Health Verification  │
-              └──────────────────────┘
+```text
+                        Developer
+                              │
+                           git push
+                              ▼
+                  ┌──────────────────────┐
+                  │        GitHub        │
+                  │   Source Repository  │
+                  └──────────┬───────────┘
+                             │
+                          Trigger
+                             ▼
+                  ┌──────────────────────┐
+                  │     GitHub Actions   │
+                  │     CI/CD Pipeline   │
+                  └──────────┬───────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │     Checkout Code   │
+                  │   Retrieve Source    │
+                  └──────────┬───────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │        Pytest       │
+                  │  Automated Testing   │
+                  └──────────┬───────────┘
+                             │
+                       Tests Pass?
+                        /          \
+                      ❌            ✅
+                      │              │
+                      ▼              ▼
+                 ┌─────────┐  ┌──────────────────────┐
+                 │ Pipeline│  │     Docker Build    │
+                 │  Stops  │  │   Container Image    │
+                 └─────────┘  └──────────┬───────────┘
+                                          │
+                                         ▼
+                              ┌──────────────────────┐
+                              │      Amazon ECR     │
+                              │   Container Registry  │
+                              └──────────┬───────────┘
+                                         │
+                                      Pull Image
+                                         ▼
+                              ┌──────────────────────┐
+                              │      Amazon EC2     │
+                              │     Docker Runtime    │
+                              └──────────┬───────────┘
+                                         │
+                                         ▼
+                              ┌──────────────────────┐
+                              │      FastAPI        │
+                              │     Application      │
+                              └──────────┬───────────┘
+                                         │
+                                         ▼
+                              ┌──────────────────────┐
+                              │       /health      │
+                              │  Health Verification │
+                              └──────────────────────┘
+```
 
 
 ## AWS and Terraform workflow
 
-                         👨‍💻 DEVELOPER
-                              │
-                              │ Terraform Code
-                              ▼
-                    ┌─────────────────────┐
-                    │ 🐙 GitHub           │
-                    │ Infrastructure Code │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ 🏗️ Terraform        │
-                    │ Infrastructure as   │
-                    │ Code (IaC)           │
-                    └──────────┬──────────┘
-                               │
-                     terraform init
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ 📦 Providers &      │
-                    │ Modules             │
-                    └──────────┬──────────┘
-                               │
-                     terraform validate
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ 🔍 Terraform Plan   │
-                    │ Preview Changes     │
-                    └──────────┬──────────┘
-                               │
-                        Review Changes
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ 🚀 Terraform Apply  │
-                    │ Provision Resources │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-┌───────────────────────────────────────────────────────────────┐
-│                         ☁️ AWS CLOUD                          │
-│                                                               │
-│  ┌─────────────────────────────────────────────────────────┐  │
-│  │ 🌐 Amazon VPC                                           │  │
-│  │                                                         │  │
-│  │   ┌──────────────────┐     ┌────────────────────────┐  │  │
-│  │   │ 🌍 Public Subnet │     │ 🔒 Private Subnet      │  │  │
-│  │   │                  │     │                        │  │  │
-│  │   │ 🖥️ EC2           │     │ 🔄 NAT Gateway         │  │  │
-│  │   └────────┬─────────┘     └────────────────────────┘  │  │
-│  │            │                                            │  │
-│  │            ▼                                            │  │
-│  │      🐳 Docker Runtime                                  │  │
-│  │            │                                            │  │
-│  │            ▼                                            │  │
-│  │      🚀 FastAPI Application                             │  │
-│  │                                                         │  │
-│  └─────────────────────────────────────────────────────────┘  │
-│                                                               │
-│  🔐 IAM          🛡️ Security Groups        📦 ECR             │
-│                                                               │
-│  🚪 Internet Gateway       🛣️ Route Tables                    │
+
+Infrastructure is provisioned using Terraform with reusable modules and
+separate staging and production environments.
+
+```text
+                      Terraform
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Environment Config  │
+              │                     │
+              │ Staging / Production│
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │   Terraform Modules │
+              └──────────┬──────────┘
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+         VPC           Security        IAM
+          │              │              │
+          └──────────────┼──────────────┘
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+              ▼                     ▼
+            Amazon ECR            Amazon EC2
+          Container Registry     Application Host
+```
+
+### Terraform Modules
+
+- **VPC** — network and subnet configuration
+- **Security** — security groups and network controls
+- **IAM** — roles and permissions
+- **ECR** — private container registry
+- **EC2** — application compute infrastructure
+
+### Environment Separation
+
+```text
+infrastructure/terraform/
+│
+├── modules/
+│   ├── vpc/
+│   ├── security/
+│   ├── iam/
+│   ├── ecr/
+│   └── ec2/
+│
+└── environments/
+    ├── staging/
+    └── production/
+```          │
 │                                                               │
 └───────────────────────────────────────────────────────────────┘
 
-# 🔐 Secure Cloud DevOps Platform
+## Secure Cloud DevOps Platform
 
 
 Security is implemented as a defense-in-depth architecture, applying controls across the source-code, CI/CD, container, identity, network, and AWS infrastructure layers.
 # Security Architecture
 Key controls include:
 
-🔑 IAM — Controlled AWS permissions and role-based access
-🛡️ Security Groups — Restricted network access to required ports
-🔐 GitHub Secrets — Sensitive deployment credentials kept outside source code
-🌐 Network Segmentation — Public and private subnet architecture
-📦 Amazon ECR — Centralized container image management
-🐳 Container Security — Dockerized application with controlled runtime configuration
+  IAM — Controlled AWS permissions and role-based access
+  Security Groups — Restricted network access to required ports
+  GitHub Secrets — Sensitive deployment credentials kept outside source code
+  Network Segmentation — Public and private subnet architecture
+  Amazon ECR — Centralized container image management
+  Container Security — Dockerized application with controlled runtime configuration
 
 
 
-## 🧪 Testing & Validation Structure
+##  Testing & Validation Structure
 
 The platform uses automated testing and validation at both the application and infrastructure layers to ensure changes are validated before deployment.
 
-🔬 Validation Pipeline
-       💻 Source Code
-             │
-             ▼
-       🧪 Pytest Tests
-             │
-          ┌──┴──┐
-          │     │
-         ❌     ✅
-          │     │
-        Stop    ▼
-             🐳 Docker Build
-                  │
-                  ▼
-             🚀 Container
-                  │
-                  ▼
-             ❤️ /health
-                  │
-                  ▼
-          🏗️ Terraform Validate
-                  │
-                  ▼
-             🔍 Terraform Plan
-                  │
-                  ▼
-              ☁️ AWS
 
+The platform validates application code, containerization, and infrastructure before deployment.
 
-## 🚀 Deployment Workflow
+```text
+                     Source Code
+                          │
+                          ▼
+                   ┌─────────────┐
+                   │    Pytest   │
+                   │ Application │
+                   │    Tests    │
+                   └──────┬──────┘
+                          │
+                      Tests Pass?
+                       /       \
+                     No         Yes
+                     │           │
+                     ▼           ▼
+                  ┌──────┐  ┌─────────────┐
+                  │ Stop │  │ Docker Build│
+                  └──────┘  └──────┬──────┘
+                                   │
+                                   ▼
+                            ┌─────────────┐
+                            │  Container  │
+                            └──────┬──────┘
+                                   │
+                                   ▼
+                            ┌─────────────┐
+                            │   /health   │
+                            │ Health Check│
+                            └──────┬──────┘
+                                   │
+                                   ▼
+                         ┌──────────────────┐
+                         │ Terraform        │
+                         │ Validate         │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │ Terraform Plan   │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                              AWS Deploy
+```
+
+##  Deployment Workflow
 
 The application follows an automated deployment path from source control to the AWS runtime environment.
 
 
-👨‍💻 Developer
-      │
-      ▼
-🐙 GitHub
-      │
-      ▼
-⚙️ GitHub Actions
-      │
-      ▼
-🧪 Test & Validate
-      │
-      ▼
-🐳 Build Docker Image
-      │
-      ▼
-📦 Amazon ECR
-      │
-      ▼
-🖥️ Amazon EC2
-      │
-      ▼
-🚀 FastAPI Container
-      │
-      ▼
-❤️ Health Check
+  ## Deployment Workflow
+
+The application follows an automated deployment path from source control to the AWS runtime environment.
+
+```text
+                         Developer
+                             │
+                          git push
+                             ▼
+                    ┌─────────────────┐
+                    │     GitHub      │
+                    │ Source Control  │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ GitHub Actions  │
+                    │    CI / CD      │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Test & Validate │
+                    │     Pytest      │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │  Docker Build   │
+                    │ Container Image │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │   Amazon ECR    │
+                    │ Image Registry  │
+                    └────────┬────────┘
+                             │
+                         Pull Image
+                             ▼
+                    ┌─────────────────┐
+                    │   Amazon EC2    │
+                    │ Docker Runtime  │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ FastAPI         │
+                    │   Container     │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │    /health      │
+                    │ Health Check    │
+                    └─────────────────┘
+```
 
 
 | Stage        | Tool              | Purpose             |
 | ------------ | ----------------- | ------------------- |
-| Source       | 🐙 GitHub         | Version control     |
-| CI/CD        | ⚙️ GitHub Actions | Automate deployment |
-| Validation   | 🧪 Pytest         | Verify application  |
-| Build        | 🐳 Docker         | Package application |
-| Registry     | 📦 Amazon ECR     | Store image         |
-| Runtime      | 🖥️ EC2           | Run container       |
-| Verification | ❤️ `/health`      | Confirm deployment  |
+| Source       |   GitHub         | Version control     |
+| CI/CD        |   GitHub Actions | Automate deployment |
+| Validation   |   Pytest         | Verify application  |
+| Build        |   Docker         | Package application |
+| Registry     |   Amazon ECR     | Store image         |
+| Runtime      |   EC2           | Run container       |
+| Verification |   `/health`      | Confirm deployment  |
 
 **Infrastructure:** AWS resources are provisioned separately using 🏗️ **Terraform**.
 
@@ -407,20 +427,20 @@ The platform was validated across the application, container, and infrastructure
 
 | Check | Validation Result |
 |---|---|
-| 🧪 **Pytest** | ✅ Tests Passed |
-| 🏗️ **Terraform Validate** | ✅ Configuration Valid |
-| 🐳 **Docker Build** | ✅ Image Built Successfully |
-| 🚀 **Docker Container** | ✅ Container Running |
-| ❤️ **API Health Check** | ✅ `{"status":"healthy"}` |
-| ⚙️ **GitHub Actions** | ✅ CI Workflow Successful |
+|   **Pytest** | ✅ Tests Passed |
+|   **Terraform Validate** | ✅ Configuration Valid |
+|   **Docker Build** | ✅ Image Built Successfully |
+|   **Docker Container** | ✅ Container Running |
+|   **API Health Check** | ✅ `{"status":"healthy"}` |
+|   **GitHub Actions** | ✅ CI Workflow Successful |
 
-❤️ Application Verification
+  Application Verification
 curl http://localhost:8000/health
 {
   "status": "healthy"
 }
 
-🏗️ Infrastructure Verification
+  Infrastructure Verification
 terraform validate
 Success! The configuration is valid.
 
@@ -433,15 +453,15 @@ Success! The configuration is valid.
 
 ![API Health Check](docs/screenshots/api-health-check.png)
 
-## 🔮 Future Improvements
+##   Future Improvements
 
-- ☸️ **Kubernetes / EKS** — Introduce container orchestration and scalable workloads.
-- 🔐 **DevSecOps** — Add automated security and vulnerability scanning to CI/CD.
-- 📊 **Observability** — Implement Prometheus, Grafana, and centralized logging.
-- 🔄 **GitOps** — Adopt Argo CD for automated Kubernetes deployments.
-- 📈 **High Availability** — Add load balancing, auto scaling, HTTPS, and multi-AZ infrastructure.
+-   **Kubernetes / EKS** — Introduce container orchestration and scalable workloads.
+-   **DevSecOps** — Add automated security and vulnerability scanning to CI/CD.
+-   **Observability** — Implement Prometheus, Grafana, and centralized logging.
+-   **GitOps** — Adopt Argo CD for automated Kubernetes deployments.
+-   **High Availability** — Add load balancing, auto scaling, HTTPS, and multi-AZ infrastructure.
 
-## 👤 Author
+##   Author
 
 **Rishi Chourasia**  
 Cloud & DevOps Engineer | AWS | Terraform | Docker | Kubernetes | CI/CD
