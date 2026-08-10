@@ -5,56 +5,65 @@ A containerized FastAPI application deployed on AWS using Terraform, Docker, Ama
 
 Secure Cloud DevOps Platform is a focused DevOps project that provisions AWS infrastructure with Terraform and deploys a containerized FastAPI application using Docker, Amazon ECR, and Amazon EC2.
 
-🔄 Platform Structure
+  ### Platform Structure
 
- 👨‍💻 Developer
-     │
-     ▼
-🐙 GitHub
-     │
-     ▼
-⚙️ GitHub Actions
-     │
-     ├── 🧪 Test
-     ├── 🔍 Validate
-     └── 🏗️ Build
-          │
-          ▼
-     🐳 Docker
-          │
-          ▼
-     📦 Amazon ECR
-          │
-          ▼
-     🖥️ Amazon EC2
-          │
-          ▼
-     🚀 FastAPI
-          │
-          ▼
-     ❤️ /health
+```text
+                         Developer
+                             │
+                          git push
+                             ▼
+                         GitHub
+                             │
+                             ▼
+                    GitHub Actions
+                             │
+                 ┌───────────┼───────────┐
+                 │           │           │
+                 ▼           ▼           ▼
+               Test       Validate      Build
+                                         │
+                                         ▼
+                                      Docker
+                                         │
+                                         ▼
+                                    Amazon ECR
+                                         │
+                                         ▼
+                                    Amazon EC2
+                                         │
+                                         ▼
+                                      FastAPI
+                                         │
+                                         ▼
+                                     /health
+```
 
 Deployment Flow
 
 Code → Docker → ECR → EC2 → FastAPI
 
 Terraform provisions the VPC, subnets, routing, security, IAM, ECR, and EC2 infrastructure, creating a reproducible foundation for the application.
+
 ## Project Objective
 
  Project Objective
 
 Build a secure and reproducible AWS deployment workflow using Terraform, Docker, ECR, and EC2, demonstrating core DevOps practices from infrastructure provisioning to containerized application deployment.
 
+
 ## Features
 
-🧪 Automated Testing — FastAPI application tested with pytest
-🔄 CI Automation — GitHub Actions automatically runs the test pipeline
-🐳 Containerization — Application packaged into a Docker image
-❤️ Health Monitoring Endpoint — /health endpoint for application health checks
-🔐 Security-Oriented Infrastructure — Terraform-based AWS infrastructure structure
-🌍 Environment Separation — Staging and production infrastructure configurations
-📦 Infrastructure as Code — AWS infrastructure managed through Terraform
-🏗️ Modular Project Structure — Application, tests, infrastructure, scripts, and workflows separated cleanly
+| Capability | Description |
+|---|---|
+| **Automated Testing** | FastAPI application tested with Pytest |
+| **CI Automation** | GitHub Actions automatically runs the test pipeline |
+| **Containerization** | Application packaged into a Docker image |
+| **Health Verification** | `/health` endpoint used for application health checks |
+| **Security-Oriented Infrastructure** | Terraform-managed AWS infrastructure with IAM and network security controls |
+| **Environment Separation** | Separate staging and production infrastructure configurations |
+| **Infrastructure as Code** | AWS infrastructure managed through reusable Terraform modules |
+| **Modular Project Structure** | Application, tests, infrastructure, scripts, and workflows organized into dedicated components |
+
 
 ## Architecture
 
